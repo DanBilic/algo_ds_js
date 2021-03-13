@@ -5,9 +5,16 @@ const reverseLinkedList = (head) => {
   let next = null;
 
   while (head !== null) {
+    // save next node
     next = head.next;
+
+    // set head.next to prev node -> removes connection to next node
     head.next = prev;
+
+    // prev node pointer is set to current node
     prev = head;
+
+    // current node is set to next
     head = next;
   }
 
