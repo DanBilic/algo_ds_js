@@ -95,6 +95,6 @@ myList.append(6);
 
 // myList.insert(3, 300);
 
-console.log("linked_list: ", myList.printList());
+// console.log("linked_list: ", myList.printList());
 
 module.exports = LinkedList;
