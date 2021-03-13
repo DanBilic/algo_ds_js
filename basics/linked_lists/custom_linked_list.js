@@ -51,6 +51,26 @@ class LinkedList {
     this.length++;
     return this;
   }
+  reverse() {
+    // https://www.youtube.com/watch?v=UCv-EmtvPe4
+    let head = this.head;
+
+    // current head will be new tail after reverse
+    this.tail = head;
+
+    let prev = null;
+    let next = null;
+
+    while (head !== null) {
+      next = head.next;
+      head.next = prev;
+      prev = head;
+      head = next;
+    }
+
+    this.head = prev;
+    return this;
+  }
 
   printList() {
     let listArr = [];
@@ -73,6 +93,8 @@ myList.append(4);
 myList.append(5);
 myList.append(6);
 
-myList.insert(3, 300);
+// myList.insert(3, 300);
 
 console.log("linked_list: ", myList.printList());
+
+module.exports = LinkedList;
