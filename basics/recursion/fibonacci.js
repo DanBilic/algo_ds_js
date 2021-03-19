@@ -1,3 +1,5 @@
+// exponential time for recursive approach
+
 const fibonacciRecursive = (num) => {
   if (num === 1) {
     return 1;
@@ -9,6 +11,7 @@ const fibonacciRecursive = (num) => {
   return fibonacciRecursive(num - 2) + fibonacciRecursive(num - 1);
 };
 
+// O(n) time
 const fibonacciIterative = (num) => {
   let arr = [0, 1];
 

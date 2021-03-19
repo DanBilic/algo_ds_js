@@ -1,3 +1,6 @@
+// find current min number in the array and set it
+// at the beginning of the array
+
 const selectionSort = (arr) => {
   for (let i = 0; i < arr.length; i++) {
     // set current index as minimum
