@@ -45,3 +45,14 @@ const fibCached = () => {
 const fasterFib = fibCached();
 console.log(fasterFib(8));
 console.log(fasterFib(8));
+
+const fibBottomUp = (n) => {
+  let answer = [0, 1];
+  for (let i = 2; i <= n; i++) {
+    answer.push(answer[i - 1] + answer[i - 2]);
+  }
+  return answer.pop();
+};
+
+console.log("bottom up fib: ", fibBottomUp(5));
+console.log("bottom up fib: ", fibBottomUp(8));
