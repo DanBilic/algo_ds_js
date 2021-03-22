@@ -24,3 +24,24 @@ const memoizedFibonacci = memo(fibonacci);
 // console.log(fibonacci(8));
 console.log(memoizedFibonacci(8));
 console.log(memoizedFibonacci(8));
+
+const fibCached = () => {
+  let cache = {};
+  return (fib = (n) => {
+    if (n in cache) {
+      console.log("result from cache: ", cache[n]);
+      return cache[n];
+    } else {
+      if (n < 2) {
+        return n;
+      } else {
+        cache[n] = fib(n - 1) + fib(n - 2);
+        return cache[n];
+      }
+    }
+  });
+};
+
+const fasterFib = fibCached();
+console.log(fasterFib(8));
+console.log(fasterFib(8));
