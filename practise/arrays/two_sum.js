@@ -18,3 +18,27 @@ const findTwoSum = function (nums, target) {
 };
 
 console.log("brute force solution: ", findTwoSum(numsArray, targetToFind));
+
+// optimized solution
+
+const findTwoSumOptimized = function (nums, target) {
+  const numsMap = {};
+
+  for (let p = 0; p < nums.length; p++) {
+    const currentMapVal = numsMap[nums[p]];
+
+    if (currentMapVal >= 0) {
+      return [currentMapVal, p];
+    } else {
+      const numberToFind = target - nums[p];
+      numsMap[numberToFind] = p;
+    }
+  }
+
+  return null;
+};
+
+console.log(
+  "optimized solution: ",
+  findTwoSumOptimized(numsArray, targetToFind)
+);
