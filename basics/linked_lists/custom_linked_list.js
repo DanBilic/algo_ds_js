@@ -88,13 +88,43 @@ class LinkedList {
 let myList = new LinkedList(1);
 
 myList.append(2);
-myList.append(3);
-myList.append(4);
-myList.append(5);
+myList.append(2);
+myList.append(2);
+myList.append(2);
 myList.append(6);
 
 // myList.insert(3, 300);
 
 // console.log("linked_list: ", myList.printList());
+
+const removeDuplicates = (list) => {
+  const cache = {};
+  cache[list.head.value] = list.head.value;
+
+  let currentNode = list.head;
+  let result = new LinkedList(list.head.value);
+  let headResult = result.head;
+  let tail = headResult;
+
+  while (currentNode !== null) {
+    if (cache[currentNode.value] === undefined) {
+      cache[currentNode.value] = currentNode.value;
+      let node = {
+        value: currentNode.value,
+        next: null,
+      };
+      tail.next = node;
+      tail = node;
+    }
+    currentNode = currentNode.next;
+  }
+
+  console.log("cache", cache);
+  console.log("head", result.printList());
+  console.log("see", list.printList());
+  return null;
+};
+
+removeDuplicates(myList);
 
 module.exports = LinkedList;
