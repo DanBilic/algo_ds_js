@@ -41,6 +41,8 @@ function hasCycle(head) {
 
 let llist = new SinglyLinkedList();
 
-for (let i = 0; i < llistCount; i++) {
-  llist.insertNode(llistItem);
+for (let i = 0; i < 5; i++) {
+  llist.insertNode(i);
 }
+
+console.log(hasCycle(llist.head));
