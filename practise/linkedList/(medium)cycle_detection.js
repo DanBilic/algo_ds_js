@@ -28,6 +28,8 @@ function hasCycle(head) {
   let slow = head;
   let fast = head;
 
+  // check if fast.next !== null else fast.next.next will
+  // throw runtime error if fast.next is null
   while (fast !== null && fast.next !== null) {
     slow = slow.next;
     fast = fast.next.next;
