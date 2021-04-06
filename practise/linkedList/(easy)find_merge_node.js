@@ -16,13 +16,13 @@ function findMergeNode(headA, headB) {
     headBcurrent = headB;
 
   while (headAcurrent !== headBcurrent) {
-    if (headAcurrent.next === null) {
-      headAcurrent.next = headB;
+    if (headAcurrent === null) {
+      headAcurrent = headB;
     } else {
       headAcurrent = headAcurrent.next;
     }
-    if (headBcurrent.next === null) {
-      headBcurrent.next = headA;
+    if (headBcurrent === null) {
+      headBcurrent = headA;
     } else {
       headBcurrent = headBcurrent.next;
     }
