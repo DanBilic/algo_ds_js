@@ -34,7 +34,7 @@ function getMax(operations) {
   return answers;
 }
 
-// optimized
+// optimized -> still some errors
 /*
  * Complete the 'getMax' function below.
  *
@@ -76,6 +76,61 @@ function getMaxOptimized(operations) {
         if (stack.length > 0) {
           let lastElement = stack[stack.length - 1];
           answers.push(lastElement.max);
+          break;
+        }
+    }
+  }
+  console.log("answers", answers);
+  return answers;
+}
+
+// optimization with 2 stacks -> no errors
+/*
+ * Complete the 'getMax' function below.
+ *
+ * The function is expected to return an INTEGER_ARRAY.
+ * The function accepts STRING_ARRAY operations as parameter.
+ */
+
+function getMaxWith2Stacks(operations) {
+  // Write your code here
+
+  let stack = [];
+  let answers = [],
+    maxStack = [];
+
+  console.log(operations);
+  for (let i = 0; i < operations.length; i++) {
+    let operation = operations[i].split(" ");
+
+    switch (operation[0]) {
+      case "1":
+        let item = parseInt(operation[1]);
+        stack.push(item);
+
+        if (maxStack.length > 0) {
+          if (item < maxStack[maxStack.length - 1]) {
+            maxStack.push(maxStack[maxStack.length - 1]);
+          } else {
+            maxStack.push(item);
+          }
+        } else {
+          maxStack.push(item);
+        }
+        console.log("stack", stack);
+        console.log("max stack", maxStack);
+        break;
+
+      case "2":
+        stack.pop();
+        maxStack.pop();
+        console.log("stack", stack);
+        console.log("max stack", maxStack);
+        break;
+
+      case "3":
+        if (stack.length > 0) {
+          answers.push(maxStack[maxStack.length - 1]);
           break;
         }
     }
