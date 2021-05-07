@@ -11,15 +11,28 @@ class BinarySearchTree {
     this.root = null;
   }
 
-  traverse(func = console.log) {
-    let current = this.root;
-    func(current);
+  inOrder(func = console.log) {
+    if (this.root === null) {
+      return;
+    }
 
-    while (current !== null) {
-      if (current.left) {
-        func(current.left);
-        current.left;
+    let stack = [];
+    let current = this.root;
+
+    while (current !== null || stack.length > 0) {
+      // reach most left node of curr node
+      while (current !== null) {
+        stack.push(current);
+        current = current.left;
       }
+
+      // current must be null at this point
+      current = stack.pop();
+
+      func(current);
+
+      // left subtree is visited now visit right subtree
+      current = current.right;
     }
   }
 
@@ -33,6 +46,10 @@ class BinarySearchTree {
       let current = this.root;
 
       while (true) {
+        if (value === current.value) {
+          console.log("Value already exists");
+          return this;
+        }
         if (value < current.value) {
           if (current.left === null) {
             current.left = newNode;
@@ -56,6 +73,7 @@ class BinarySearchTree {
 }
 
 let tree = new BinarySearchTree();
-tree.insert(5).insert(2).insert(10).insert(1);
+tree.insert(5).insert(10).insert(6).insert(20).insert(8);
 
-console.log(tree);
+tree.inOrder();
+// console.log(tree);
