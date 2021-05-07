@@ -22,3 +22,11 @@ class BinaryTree {
     );
   }
 }
+
+const countLeafNodes = (node) => {
+  if (node === null) return 0;
+  if (!node.yes && !node.no) {
+    return 1;
+  }
+  return countLeafNodes(node.yes) + countLeafNodes(node.no);
+};
