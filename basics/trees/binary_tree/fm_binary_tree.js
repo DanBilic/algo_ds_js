@@ -53,18 +53,18 @@ const preOrder = (node, func = console.log) => {
   }
 
   if (node.right) {
-    node.right.inOrder(func);
+    node.right.preOrder(func);
   }
 };
 
 // left,  right, root
 const postOrder = (node, func = console.log) => {
   if (node.left) {
-    node.left.inOrder(func);
+    node.left.postOrder(func);
   }
 
   if (node.right) {
-    node.right.inOrder(func);
+    node.right.postOrder(func);
   }
   func(node);
 };
