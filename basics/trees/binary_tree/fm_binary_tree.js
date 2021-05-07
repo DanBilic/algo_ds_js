@@ -30,3 +30,41 @@ const countLeafNodes = (node) => {
   }
   return countLeafNodes(node.yes) + countLeafNodes(node.no);
 };
+
+// left, root, right
+const inOrder = (node, func = console.log) => {
+  if (node.left) {
+    node.left.inOrder(func);
+  }
+
+  func(node);
+
+  if (node.right) {
+    node.right.inOrder(func);
+  }
+};
+
+// root, left, right
+const preOrder = (node, func = console.log) => {
+  func(node);
+
+  if (node.left) {
+    node.left.preOrder(func);
+  }
+
+  if (node.right) {
+    node.right.inOrder(func);
+  }
+};
+
+// left,  right, root
+const postOrder = (node, func = console.log) => {
+  if (node.left) {
+    node.left.inOrder(func);
+  }
+
+  if (node.right) {
+    node.right.inOrder(func);
+  }
+  func(node);
+};
