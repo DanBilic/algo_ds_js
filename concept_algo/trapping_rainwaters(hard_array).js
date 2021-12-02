@@ -8,7 +8,7 @@ const getTrappedWater = (heights) => {
       maxLeft = 0,
       maxRight = 0;
 
-    while (leftP > 0) {
+    while (leftP >= 0) {
       maxLeft = Math.max(maxLeft, heights[leftP]);
       leftP--;
     }
