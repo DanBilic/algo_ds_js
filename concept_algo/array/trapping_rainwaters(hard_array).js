@@ -26,6 +26,7 @@ const getTrappedWater = (heights) => {
 
 console.log("input array: ", heights);
 console.log("result: ", getTrappedWater(heights));
+console.log("\n");
 
 console.log("TRAPPING RAINWATER --> optimal solution:");
 
@@ -59,3 +60,4 @@ const trappingRainwaterOptimal = (heights) => {
 
 console.log("input array: ", heights);
 console.log("optimal result: ", trappingRainwaterOptimal(heights));
+console.log("\n");
