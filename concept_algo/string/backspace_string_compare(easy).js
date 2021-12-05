@@ -1,3 +1,5 @@
+// two pointer technique
+
 const s1 = "ad#c";
 const s2 = "ad#c";
 
