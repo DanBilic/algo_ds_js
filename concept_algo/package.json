@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node main.js",
     "string": "node runString.js",
-    "array": "node runArray.js"
+    "array": "node runArray.js",
+    "linkedList": "node runLinkedList.js"
   },
   "author": "",
   "license": "ISC"
