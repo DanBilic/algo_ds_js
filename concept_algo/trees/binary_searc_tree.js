@@ -36,7 +36,24 @@ class BinarySearchTree {
       }
     }
   };
-  lookup = (value) => {};
+  lookup = (value) => {
+    if (!this.root) {
+      return false;
+    }
+
+    let currentNode = this.root;
+    while (currentNode) {
+      if (currentNode.value === value) {
+        return currentNode;
+      } else if (value < currentNode.value) {
+        currentNode = currentNode.left;
+      } else if (value > currentNode.value) {
+        currentNode = currentNode.right;
+      }
+    }
+
+    return false;
+  };
 }
 
 const traverse = (node) => {
@@ -51,5 +68,9 @@ tree.insert(5);
 tree.insert(2);
 tree.insert(8);
 tree.insert(9);
-// console.log("tree", tree.root);
-console.log(JSON.stringify(traverse(tree.root)));
+
+console.log("lookup: ", tree.lookup(2));
+console.log(
+  "binary search tree in JSON format: \n",
+  JSON.stringify(traverse(tree.root))
+);
