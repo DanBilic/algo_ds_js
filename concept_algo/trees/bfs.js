@@ -76,6 +76,23 @@ class BinarySearchTree {
 
     return resultList;
   };
+
+  breathFirstSearchRecursive = (queue, list) => {
+    if (!queue.length) {
+      return list;
+    }
+
+    let currentNode = queue.shift();
+
+    list.push(currentNode.value);
+    if (currentNode.left) {
+      queue.push(currentNode.left);
+    }
+    if (currentNode.right) {
+      queue.push(currentNode.right);
+    }
+    return this.breathFirstSearchRecursive(queue, list);
+  };
 }
 
 const traverse = (node) => {
@@ -93,3 +110,4 @@ tree.insert(9);
 tree.insert(1);
 
 console.log("BFS: ", tree.breathFirstSearch());
+console.log("BFS: ", tree.breathFirstSearchRecursive([tree.root], []));
