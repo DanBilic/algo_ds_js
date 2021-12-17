@@ -37,7 +37,7 @@ class BinarySearchTree {
     }
   };
 
-  depthFirstSearch = () => {
+  depthFirstSearchPreorder = () => {
     const stack = [];
     const list = [];
 
@@ -111,7 +111,10 @@ tree.insert(9);
 tree.insert(1);
 tree.insert(3);
 
-console.log("DFS iterative: ", tree.depthFirstSearch([tree.root], []));
+console.log(
+  "DFS iterative [PREORDER]: ",
+  tree.depthFirstSearchPreorder([tree.root], [])
+);
 console.log("DFS recursive [INORDER]: ", tree.DFSinorder(tree.root, []));
 console.log("DFS recursive [PREORDER]: ", tree.DFSpreorder(tree.root, []));
 console.log("DFS recursive [POSTORDER]: ", tree.DFSpostorder(tree.root, []));
