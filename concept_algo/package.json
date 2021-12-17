@@ -8,7 +8,8 @@
     "start": "node main.js",
     "string": "node runString.js",
     "array": "node runArray.js",
-    "linkedList": "node runLinkedList.js"
+    "linkedList": "node runLinkedList.js",
+    "binarySearchTree": "node runBst.js"
   },
   "author": "",
   "license": "ISC"
