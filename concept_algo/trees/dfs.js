@@ -37,43 +37,26 @@ class BinarySearchTree {
     }
   };
 
-  //   bfs needs queue
-  breathFirstSearch = () => {
-    let currentNode = this.root;
-    let resultList = [];
-    let queue = [];
-    queue.push(currentNode);
+  depthFirstSearch = () => {
+    const stack = [];
+    const list = [];
 
-    while (queue.length > 0) {
-      currentNode = queue.shift();
-      resultList.push(currentNode.value);
+    stack.push(this.root);
+
+    while (stack.length > 0) {
+      let currentNode = stack.pop();
+      list.push(currentNode.value);
+
+      if (currentNode.right) {
+        stack.push(currentNode.right);
+      }
 
       if (currentNode.left) {
-        queue.push(currentNode.left);
-      }
-      if (currentNode.right) {
-        queue.push(currentNode.right);
+        stack.push(currentNode.left);
       }
     }
 
-    return resultList;
-  };
-
-  breathFirstSearchRecursive = (queue, list) => {
-    if (!queue.length) {
-      return list;
-    }
-
-    let currentNode = queue.shift();
-
-    list.push(currentNode.value);
-    if (currentNode.left) {
-      queue.push(currentNode.left);
-    }
-    if (currentNode.right) {
-      queue.push(currentNode.right);
-    }
-    return this.breathFirstSearchRecursive(queue, list);
+    return list;
   };
 }
 
@@ -90,9 +73,6 @@ tree.insert(2);
 tree.insert(8);
 tree.insert(9);
 tree.insert(1);
+tree.insert(3);
 
-console.log("BFS iterative: ", tree.breathFirstSearch());
-console.log(
-  "BFS recursive: ",
-  tree.breathFirstSearchRecursive([tree.root], [])
-);
+console.log("DFS iterative: ", tree.depthFirstSearch());
