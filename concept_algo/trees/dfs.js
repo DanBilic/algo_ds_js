@@ -58,6 +58,42 @@ class BinarySearchTree {
 
     return list;
   };
+
+  DFSinorder = (node, list) => {
+    if (node.left) {
+      this.DFSinorder(node.left, list);
+    }
+    list.push(node.value);
+    if (node.right) {
+      this.DFSinorder(node.right, list);
+    }
+
+    return list;
+  };
+
+  DFSpreorder = (node, list) => {
+    list.push(node.value);
+    if (node.left) {
+      this.DFSpreorder(node.left, list);
+    }
+    if (node.right) {
+      this.DFSpreorder(node.right, list);
+    }
+
+    return list;
+  };
+
+  DFSpostorder = (node, list) => {
+    if (node.left) {
+      this.DFSpostorder(node.left, list);
+    }
+    if (node.right) {
+      this.DFSpostorder(node.right, list);
+    }
+    list.push(node.value);
+
+    return list;
+  };
 }
 
 const traverse = (node) => {
@@ -75,4 +111,7 @@ tree.insert(9);
 tree.insert(1);
 tree.insert(3);
 
-console.log("DFS iterative: ", tree.depthFirstSearch());
+console.log("DFS iterative: ", tree.depthFirstSearch([tree.root], []));
+console.log("DFS recursive [INORDER]: ", tree.DFSinorder(tree.root, []));
+console.log("DFS recursive [PREORDER]: ", tree.DFSpreorder(tree.root, []));
+console.log("DFS recursive [POSTORDER]: ", tree.DFSpostorder(tree.root, []));
