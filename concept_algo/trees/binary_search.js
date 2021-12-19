@@ -24,3 +24,4 @@ console.log("Binary search: \n");
 console.log("input array: ", sortedArray);
 console.log("target: 3");
 console.log("result: ", binarySearch(sortedArray, 3));
+console.log("complexity Time: O(log n) - Space: O(1)");

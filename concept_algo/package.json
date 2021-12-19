@@ -9,7 +9,8 @@
     "string": "node runString.js",
     "array": "node runArray.js",
     "linkedList": "node runLinkedList.js",
-    "binarySearchTree": "node runBst.js"
+    "bst": "node runBst.js",
+    "bst-q": "node runBstQuestions.js"
   },
   "author": "",
   "license": "ISC"
