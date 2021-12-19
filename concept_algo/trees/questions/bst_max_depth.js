@@ -45,21 +45,21 @@ const traverse = (node) => {
   return tree;
 };
 
-const dfs = (node, count) => {
+const maxDepthDfs = (node, count) => {
   if (node === null) {
     return count;
   }
 
   const newCount = count + 1;
   if (node.left) {
-    const leftCount = dfs(node.left, newCount);
+    const leftCount = maxDepthDfs(node.left, newCount);
 
     if (leftCount > count) {
       count = leftCount;
     }
   }
   if (node.right) {
-    const rightCount = dfs(node.right, newCount);
+    const rightCount = maxDepthDfs(node.right, newCount);
 
     if (rightCount > count) {
       count = rightCount;
@@ -91,5 +91,5 @@ console.log(
   "binary search tree in JSON format: \n",
   JSON.stringify(traverse(tree.root))
 );
-
-console.log("tree", cleanerMaxDepthDfs(tree.root, 0));
+console.log("max depth", maxDepthDfs(tree.root, 1));
+console.log("cleaner max depth", cleanerMaxDepthDfs(tree.root, 0));
