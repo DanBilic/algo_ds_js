@@ -1,3 +1,4 @@
+// LEETCODE 104. Maximum Depth of Binary Tree
 class Node {
   constructor(value) {
     this.left = null;
@@ -45,40 +46,6 @@ const traverse = (node) => {
   return tree;
 };
 
-const maxDepthDfs = (node, count) => {
-  if (node === null) {
-    return count;
-  }
-
-  const newCount = count + 1;
-  if (node.left) {
-    const leftCount = maxDepthDfs(node.left, newCount);
-
-    if (leftCount > count) {
-      count = leftCount;
-    }
-  }
-  if (node.right) {
-    const rightCount = maxDepthDfs(node.right, newCount);
-
-    if (rightCount > count) {
-      count = rightCount;
-    }
-  }
-  return count;
-};
-
-const cleanerMaxDepthDfs = (node, count) => {
-  if (!node) {
-    return count;
-  }
-  count++;
-  return Math.max(
-    cleanerMaxDepthDfs(node.left, count),
-    cleanerMaxDepthDfs(node.right, count)
-  );
-};
-
 const tree = new BinarySearchTree();
 tree.insert(5);
 tree.insert(2);
@@ -87,12 +54,41 @@ tree.insert(7);
 tree.insert(8);
 tree.insert(9);
 
+const levelOrder = (root) => {
+  if (!root) return [];
+  const result = [];
+  const queue = [root];
+
+  while (queue.length) {
+    const currentLevelValues = [];
+    let length = queue.length,
+      count = 0;
+
+    while (count < length) {
+      const currentNode = queue.shift();
+
+      currentLevelValues.push(currentNode.value);
+
+      if (currentNode.left) {
+        queue.push(currentNode.left);
+      }
+
+      if (currentNode.right) {
+        queue.push(currentNode.right);
+      }
+
+      count++;
+    }
+
+    result.push(currentLevelValues);
+  }
+
+  return result;
+};
+
 console.log(
   "binary search tree in JSON format: \n",
   JSON.stringify(traverse(tree.root))
 );
-console.log("max depth", maxDepthDfs(tree.root, 1));
-console.log("cleaner max depth", cleanerMaxDepthDfs(tree.root, 0));
-console.log(
-  "complexity: Time: O(n) eplore every node of the tree - Space: O(log n ) best, O(n) worst if all nodes form a linked list"
-);
+
+console.log("levelOrder", levelOrder(tree.root));
