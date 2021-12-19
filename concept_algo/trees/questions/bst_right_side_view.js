@@ -90,6 +90,36 @@ var rightSideView = function (root) {
   return result;
 };
 
+var rightSideViewOptimized = function (root) {
+  if (!root) {
+    return [];
+  }
+
+  // bfs
+  const list = [];
+  const queue = [root];
+
+  while (queue.length) {
+    const levelCount = queue.length;
+    let currentCount = 0;
+    const subList = [];
+
+    while (currentCount < levelCount) {
+      const currentNode = queue.shift();
+      subList.push(currentNode.value);
+      if (currentNode.left) {
+        queue.push(currentNode.left);
+      }
+      if (currentNode.right) {
+        queue.push(currentNode.right);
+      }
+      currentCount++;
+    }
+    list.push(subList[subList.length - 1]);
+  }
+  return list;
+};
+
 console.log(
   "binary search tree in JSON format: \n",
   JSON.stringify(traverse(tree.root))
@@ -97,3 +127,4 @@ console.log(
 
 console.log("level order: ", bfs(tree.root));
 console.log("right side view: ", rightSideView(tree.root));
+console.log("right side view optimized: ", rightSideViewOptimized(tree.root));
