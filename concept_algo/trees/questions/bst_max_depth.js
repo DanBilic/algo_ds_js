@@ -93,3 +93,6 @@ console.log(
 );
 console.log("max depth", maxDepthDfs(tree.root, 1));
 console.log("cleaner max depth", cleanerMaxDepthDfs(tree.root, 0));
+console.log(
+  "complexity: Time: O(n) eplore every node of the tree - Space: O(log n ) best, O(n) worst if all nodes form a linked list"
+);
