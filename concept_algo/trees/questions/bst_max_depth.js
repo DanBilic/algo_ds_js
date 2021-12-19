@@ -68,6 +68,17 @@ const dfs = (node, count) => {
   return count;
 };
 
+const cleanerMaxDepthDfs = (node, count) => {
+  if (!node) {
+    return count;
+  }
+  count++;
+  return Math.max(
+    cleanerMaxDepthDfs(node.left, count),
+    cleanerMaxDepthDfs(node.right, count)
+  );
+};
+
 const tree = new BinarySearchTree();
 tree.insert(5);
 tree.insert(2);
@@ -81,4 +92,4 @@ console.log(
   JSON.stringify(traverse(tree.root))
 );
 
-console.log("tree", dfs(tree.root, 0));
+console.log("tree", cleanerMaxDepthDfs(tree.root, 0));
