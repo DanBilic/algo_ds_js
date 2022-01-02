@@ -12,7 +12,8 @@
     "bst": "node runBst.js",
     "bst-q": "node runBstQuestions.js",
     "graph": "node runGraph.js",
-    "graph-q": "node runGraphQuestions.js"
+    "graph-q": "node runGraphQuestions.js",
+    "r-b": "node runRecursionBacktracking.js"
   },
   "author": "",
   "license": "ISC"
