@@ -10,7 +10,8 @@
     "array": "node runArray.js",
     "linkedList": "node runLinkedList.js",
     "bst": "node runBst.js",
-    "bst-q": "node runBstQuestions.js"
+    "bst-q": "node runBstQuestions.js",
+    "graph": "node runGraph.js"
   },
   "author": "",
   "license": "ISC"
