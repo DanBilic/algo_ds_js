@@ -61,3 +61,32 @@ var groupAnagrams = function (strs) {
 
   return Object.values(cache);
 };
+
+// O(n x m) -> optimal solution
+/**
+ * @param {string[]} strs
+ * @return {string[][]}
+ */
+
+const map = {};
+
+var groupAnagrams = function (strs) {
+  const cache = {};
+  const normalizeCharNum = "a".charCodeAt();
+  // multiplying primes form a unique number
+  var primes = [
+    2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71,
+    73, 79, 83, 89, 97, 101,
+  ];
+
+  for (let i = 0; i < strs.length; i++) {
+    const currentStr = strs[i];
+    const key = currentStr.split("").reduce((total, char) => {
+      return total * primes[char.charCodeAt() - normalizeCharNum];
+    }, 1);
+
+    !cache[key] ? (cache[key] = [currentStr]) : cache[key].push(currentStr);
+  }
+
+  return Object.values(cache);
+};
