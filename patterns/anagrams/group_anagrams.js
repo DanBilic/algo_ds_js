@@ -35,3 +35,29 @@ var groupAnagrams = function (strs) {
 
   return results;
 };
+
+// O(m x n log n) Solution
+/**
+ * @param {string[]} strs
+ * @return {string[][]}
+ */
+
+const map = {};
+
+var groupAnagrams = function (strs) {
+  const cache = {};
+
+  for (let i = 0; i < strs.length; i++) {
+    const currentStr = strs[i];
+    const sortedCurrentStr = currentStr.split("").sort().join("");
+
+    if (cache[sortedCurrentStr]) {
+      cache[sortedCurrentStr].push(currentStr);
+    } else {
+      cache[sortedCurrentStr] = [];
+      cache[sortedCurrentStr].push(currentStr);
+    }
+  }
+
+  return Object.values(cache);
+};
