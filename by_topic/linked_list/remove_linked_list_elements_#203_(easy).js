@@ -35,6 +35,8 @@ var removeElements = function (head, val) {
 };
 
 // Optimised solution:
+// Time: O(n)
+// Space: O(1)
 
 // Definition for singly-linked list.
 function ListNode(val, next) {
